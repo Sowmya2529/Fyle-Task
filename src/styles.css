@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body
+{
+    background: #E9F7EF;
+    color:black;
+    
+}
+
+.header
+{
+
+ height:60px;
+ color:white;
+ background: #563d7c;
+ 
+}
+
+.logo
+{
+    
+    padding:10px;
+    padding-left:10px;
+}
+.giticon
+{
+  font-size:40px;
+  color:white  
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: "Helvetica", sans-serif; }

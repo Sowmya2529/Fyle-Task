@@ -1,0 +1,134 @@
+<!-- Header -->
+<div class="header">
+ 
+  <div class="logo" style="cursor:pointer" (click)="goToHome()" title="Go To Home">
+    
+      <i class="fa fa-github pull-left giticon "></i> 
+      <h2 class="float-right pt-1">GitHub</h2>
+    
+    
+  </div>
+   <div style="clear: both;"></div>
+</div>
+
+<div *ngIf="profloading" class="spinner spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<!-- User profile block -->
+<div class="container profile-container">
+  <div class="row">
+      <div class="col-8 mt-3">
+          <div class="card profile-card">
+              <div class="card-horizontal" >
+                  <div class="img-square-wrapper">
+                      <img class="card-img-top" src="{{user[0].avatar_url}}" alt="Profile avatar">
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title"></h4>
+                      <div class="row mt-2">
+                        <div class="column">
+                          <i class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
+                          <span class="alignleft pt-2">{{user[0].login}}</span>
+                        </div>
+                     
+                      </div>
+                    <div class="row mt-2">
+                      <div class="column">  
+                       <i class="fa fa-folder alignleft" style="font-size:30px;color:purple"></i> 
+                       <span class="alignleft pt-2">{{user[0].public_repos}} Public Repositories</span>
+                       </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="column"> 
+                        <i class="fa fa-link alignleft" style="font-size:30px;color:purple"></i> 
+                        <span class="alignleft pt-2"  style="cursor:pointer"> <a href="{{user[0].html_url}}/?tab=repositories" class="text-truncate">{{user[0].html_url}}/?tab=repositories</a></span>
+                      </div>
+                    </div>
+                   <a href="{{user[0].html_url}}" > <button type="button" class="btn btn-primary mt-4">View Github Profile</button></a>
+                    </div>
+                 
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Search box -->
+
+<div class="topnav">
+
+  <div class="search-container">
+    <form>
+      <input type="text" placeholder="Search for repositories" name="search"   [(ngModel)]="searchText" autocomplete="off" >
+      <button type="submit"><i class="fa fa-search" style="cursor:pointer"></i></button>
+    </form>
+  </div>
+</div>
+<!-- <form  (submit)="onSubmit()">
+  <div class="searchbox">
+    <div class="searchsub">
+      Enter the user name to search for repos<br>
+      <input class="inpbox" type="text" [(ngModel)]='this.username' [formControl]="repo" (input)="changeValue()" ><br>
+    </div>
+    <div class="btn">
+      <button type="submit" class="btn1" (click)="onSubmit()">Search</button>
+    </div>
+
+    <div class="err" *ngIf="this.error || this.apierror">
+      <p>{{this.errmsg}}<p>
+    </div>
+  </div>
+</form> -->
+<!-- repo block -->
+<div *ngIf="repoloading" class="spinner spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="container ">
+  <div class="row repo-container">
+    
+  <mat-card class="user-card mat-elevation-z5 col-lg-4" *ngFor="let data of this.repos |filter:searchText| paginate: { itemsPerPage: itemsPerPage , currentPage: page, totalItems: totalItems } ">
+    <mat-card-content>
+      <h4 class="card-heading">{{data.name}}</h4>
+
+      <p *ngIf="data.description" >{{data.description}}</p>
+      <p  *ngIf="!data.description" >No Description</p>
+      <span class="text-truncate cursor-pointer"><a href="{{data.html_url}}">{{ data.html_url }}</a></span><br>
+      <div style="display:inline-block">
+     <div *ngIf="data.language" class="card-box" style="display:inline-block">
+      <span >{{data.language}}</span> 
+     </div> 
+     <div *ngIf="!data.language" class="card-box" style="display:inline-block">
+      <span>N/A*</span> 
+     </div>  
+     <div class="card-box" style="display:inline-block;margin-left:10px">
+      <span >Updated on {{data.updated_at}}</span>
+     </div>
+     
+    </div>
+    <!-- <div style="display:inline-block;margin-left:100px" >
+      <span >Updated on {{data.updated_at}}</span>
+    </div> -->
+
+   
+    </mat-card-content>
+ 
+  </mat-card>
+</div>
+</div>
+
+
+   
+  
+<pagination-controls *ngIf="!repoloading" class="text-center my-pagination"
+[maxSize]="maxSize"
+                         [directionLinks]="directionLinks"
+                         [autoHide]="autoHide"
+                         [responsive]="responsive"
+                         [previousLabel]="labels.previousLabel"
+                         [nextLabel]="labels.nextLabel"
+                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                         (pageChange)="page = $event"
+></pagination-controls>
+
+
