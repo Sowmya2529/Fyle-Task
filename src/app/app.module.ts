@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { RepoComponent } from './repo/repo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from "@angular/material/card";
-import { MatButtonModule } from "@angular/material/button";
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -27,13 +27,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatButtonModule,
     BrowserAnimationsModule,
     Ng2SearchPipeModule
-
-    
-  
-  
   ],
   providers: [],
   bootstrap: [AppComponent],

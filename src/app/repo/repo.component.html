@@ -63,21 +63,7 @@
     </form>
   </div>
 </div>
-<!-- <form  (submit)="onSubmit()">
-  <div class="searchbox">
-    <div class="searchsub">
-      Enter the user name to search for repos<br>
-      <input class="inpbox" type="text" [(ngModel)]='this.username' [formControl]="repo" (input)="changeValue()" ><br>
-    </div>
-    <div class="btn">
-      <button type="submit" class="btn1" (click)="onSubmit()">Search</button>
-    </div>
 
-    <div class="err" *ngIf="this.error || this.apierror">
-      <p>{{this.errmsg}}<p>
-    </div>
-  </div>
-</form> -->
 <!-- repo block -->
 <div *ngIf="repoloading" class="spinner spinner-border text-primary" role="status">
   <span class="sr-only">Loading...</span>
@@ -104,11 +90,7 @@
      </div>
      
     </div>
-    <!-- <div style="display:inline-block;margin-left:100px" >
-      <span >Updated on {{data.updated_at}}</span>
-    </div> -->
 
-   
     </mat-card-content>
  
   </mat-card>
@@ -116,7 +98,7 @@
 </div>
 
 
-   
+   <!-- pagination -->
   
 <pagination-controls *ngIf="!repoloading" class="text-center my-pagination"
 [maxSize]="maxSize"

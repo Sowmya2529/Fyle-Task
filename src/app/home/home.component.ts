@@ -56,11 +56,6 @@ this.apiservice.getUser(user).subscribe(data=>
     this.apiservice.user=data;
     console.log(data);
     this.users=data
-  //  for (let x in this.users)
-  //  {
-  //   console.log(x);
-  //   console.log(this.users[x]);
-  //  }
   localStorage.setItem('loginname', this.users['login']);
 this.router.navigate([this.users['login'],'repos']);
   },

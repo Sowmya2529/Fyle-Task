@@ -35,7 +35,7 @@ export class RepoComponent implements OnInit {
     
 
    }
-
+//method to return to home page
 goToHome()
 {
   this.router.navigate([""])
@@ -62,6 +62,8 @@ goToHome()
    }
  
    }
+
+   
   ngOnInit(): void 
   {
     console.log("oninit loaded")
@@ -85,14 +87,6 @@ goToHome()
            console.log(error)
         });
       this.getRepos();
-      // this. router.events.forEach((event) => {
-      // if(event instanceof NavigationStart) {
-      //   if (event.navigationTrigger === 'popstate') {
-      //     console.log("event triggered")
-      //     this.getRepos();
-      //   }
-      //   }
-      // });
     }
   }
 
