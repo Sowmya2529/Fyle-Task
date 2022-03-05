@@ -16,8 +16,6 @@ export class NavbarComponent implements OnInit {
   error=false;
   errmsg="";
   profloading:any;
-  
-  
   name=new FormControl(); 
   constructor(private matDialog: MatDialog,private repo:RepoComponent,private apiservice:ApiService) { }
 
@@ -34,12 +32,7 @@ export class NavbarComponent implements OnInit {
        this.openModal();
     }
   else
-  {
-     this.getUser();
-      
-    
-  }
-  
+     this.getUser();    
   }
 
   getUser()
@@ -66,17 +59,16 @@ this.apiservice.getUser(user).subscribe(data=>
     this.openModal();
 });
 
-//console.log(this.users);
+
 }
 
 openModal() {
   const dialogConfig = new MatDialogConfig();
-  // The user can't close the dialog by clicking outside its body
+
   dialogConfig.disableClose = true;
   dialogConfig.id = "modal-component";
   dialogConfig.height = "200px";
   dialogConfig.width = "300px";
-  // https://material.angular.io/components/dialog/overview
   const modalDialog = this.matDialog.open(ModalComponent, dialogConfig);
 }
 }
