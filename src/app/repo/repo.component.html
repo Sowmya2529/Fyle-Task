@@ -15,10 +15,15 @@
                   </div>
                   <div class="card-body">
                       <h4 class="card-title"></h4>
+                     <div *ngIf="this.smallscreen" class="row mt-2">
+                       <div class="column">
+                        <img  class="small-sc-img" src="{{user[0].avatar_url}}" alt="Profile avatar"> 
+                       </div>
+                     </div>
                       <div class="row mt-2">
                         <div class="column">
-                          <i *ngIf="!this.smallscreen" class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
-                          <img *ngIf="this.smallscreen" class="alignleft small-sc-img" src="{{user[0].avatar_url}}" alt="Profile avatar"> 
+                          <i class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
+                         
                           <span class="alignleft pt-2">{{user[0].login}}</span>
                         </div>
                      
@@ -32,7 +37,7 @@
                     <div class="row mt-2">
                       <div class="column"> 
                         <i class="fa fa-link alignleft" style="font-size:30px;color:purple"></i> 
-                        <span class="alignleft pt-2"  style="cursor:pointer"> <a href="{{user[0].html_url}}/?tab=repositories" class="text-truncate">{{user[0].html_url}}/?tab=repositories</a></span>
+                        <span class="alignleft pt-2 text-truncate"  style="cursor:pointer"> <a href="{{user[0].html_url}}/?tab=repositories" >{{user[0].html_url}}/?tab=repositories</a></span>
                       </div>
                     </div>
                    <a href="{{user[0].html_url}}" > <button type="button" class="btn btn-primary mt-4">View Github Profile</button></a>

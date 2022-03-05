@@ -198,22 +198,30 @@ mat-card-content
 	  .profile-container
 	  {
 		  margin-top: 50px;
+		 
 		
 		 
 		 
 	  }
+	  .profile-card
+	  {
+		  width:350px;
+		  height:400px;
+	  }
 
-.card-horizontal
 
-{
-	margin-left:180px
-}
 .small-sc-img
 {
-	height:30px;
-	width:30px;
+	height:150px;
+	width:150px;
 	border-radius: 50%;
+	margin-left: 80px;
 
 }	
+.alignleft
+{
+	margin-left: 3px;
+	float: left;
+}
   }
 	
