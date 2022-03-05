@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,HostListener } from '@angular/core';
 import { ApiService } from '../api.service';
 import { NavigationStart, Router } from '@angular/router';
 @Component({
@@ -17,7 +17,8 @@ export class RepoComponent implements OnInit {
   searchText="";
   profloading:any;
   repoloading:any;
-
+  public innerWidth: any;
+  smallscreen=false;
   public maxSize: number = 100;
   public directionLinks: boolean = true;
   public autoHide: boolean = false;
@@ -29,8 +30,14 @@ export class RepoComponent implements OnInit {
       screenReaderPageLabel: 'page',
       screenReaderCurrentLabel: `You're on page`
   };
-
-  
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+   this.innerWidth= event.target.innerWidth;
+   if(this.innerWidth<1280)
+     this.smallscreen=true
+   else
+   this.smallscreen=false
+  }
   constructor(private apiservice:ApiService,private http:HttpClient,private router:Router) {
     
 
@@ -63,11 +70,15 @@ goToHome()
  
    }
 
-   
+
   ngOnInit(): void 
   {
     console.log("oninit loaded")
-  
+    this.innerWidth = window.innerWidth;
+    if(this.innerWidth<1280)
+    {
+      this.smallscreen=true
+    }
     this.username=localStorage.getItem('loginname');
     if(!this.username)
     {

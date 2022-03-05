@@ -36,6 +36,7 @@ onSubmit()
   {
     this.error=true;
      this.errmsg="Please provide username to continue!";
+     this.apiservice.errmsg=this.errmsg;
   }
 
     this.getUser();
@@ -63,7 +64,8 @@ this.router.navigate([this.users['login'],'repos']);
     // You can access status:
     console.log(error.status);
     this.apierror=true;
-    this.errmsg="Enter valid username!";
+    this.errmsg="User does not exist!";
+    this.apiservice.errmsg=this.errmsg;
 });
 
 //console.log(this.users);

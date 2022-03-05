@@ -1,17 +1,28 @@
 <!-- Header -->
-<div class="header">
- 
-  <div class="logo" style="cursor:pointer" (click)="goToHome()" title="Go To Home">
+<!-- <div class="header">
+  <ul class="logo">
     
-      <i class="fa fa-github pull-left giticon "></i> 
-      <h2 class="float-right pt-1">GitHub</h2>
+   <li> <i class="fa fa-github pull-left giticon "  style="cursor:pointer" (click)="goToHome()" title="Go To Home"></i> </li>
+   <li><h2 class="pt-1">GitHub</h2></li>
     
-    
-  </div>
-   <div style="clear: both;"></div>
-</div>
+   <li class="search topnav">
+      <span class="input-group mb-3 searchbox"><input type="text"  name="search"   [(ngModel)]="searchText" autocomplete="off" class="form-control input-text" placeholder="Search repositories...." >
+        <span class=" searchbtn input-group-append"> <button class="btn btn-lg" type="button"><i class="fa fa-search"></i></button> </span>
+        </span>
+        
+      </li>
 
-<div *ngIf="profloading" class="spinner spinner-border text-primary" role="status">
+   </ul>
+ </div>
+
+     -->
+
+
+
+
+<app-navbar></app-navbar>
+
+<div *ngIf="profloading" class="spinner spinner-border text-primary" role="status" (window:resize)="onResize($event)">
   <span class="sr-only">Loading...</span>
 </div>
 <!-- User profile block -->
@@ -20,14 +31,15 @@
       <div class="col-8 mt-3">
           <div class="card profile-card">
               <div class="card-horizontal" >
-                  <div class="img-square-wrapper">
+                  <div *ngIf="!this.smallscreen" class="img-square-wrapper">
                       <img class="card-img-top" src="{{user[0].avatar_url}}" alt="Profile avatar">
                   </div>
                   <div class="card-body">
                       <h4 class="card-title"></h4>
                       <div class="row mt-2">
                         <div class="column">
-                          <i class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
+                          <i *ngIf="!this.smallscreen" class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
+                          <img *ngIf="this.smallscreen" class="alignleft small-sc-img" src="{{user[0].avatar_url}}" alt="Profile avatar"> 
                           <span class="alignleft pt-2">{{user[0].login}}</span>
                         </div>
                      
@@ -54,20 +66,26 @@
 </div>
 <!-- Search box -->
 
-<div class="topnav">
+<!-- <div class="topnav">
 
   <div class="search-container">
-    <form>
+    <form class="search-form">
       <input type="text" placeholder="Search for repositories" name="search"   [(ngModel)]="searchText" autocomplete="off" >
       <button type="submit"><i class="fa fa-search" style="cursor:pointer"></i></button>
     </form>
   </div>
+</div> -->
+<div class="topnav">
+<div class="input-group mb-3 searchbox"><input type="text"  name="search"   [(ngModel)]="searchText" autocomplete="off" class="form-control input-text" placeholder="Search repositories...." >
+  <div class=" searchbtn input-group-append"> <button class="btn btn-lg" type="button"><i class="fa fa-search"></i></button> </div>
 </div>
-
-<!-- repo block -->
+</div>
+<!-- Spinner -->
 <div *ngIf="repoloading" class="spinner spinner-border text-primary" role="status">
   <span class="sr-only">Loading...</span>
 </div>
+
+<!-- repo block -->
 <div class="container ">
   <div class="row repo-container">
     

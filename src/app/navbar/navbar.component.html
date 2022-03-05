@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <div class="box">
+        <form id='searchBox'>
+            <input placeholder='Search user ...' type='text' [(ngModel)]='this.username' [formControl]="name"/>
+          <span (click)="onSubmit()"><input id='submitBtn' type='submit' value='Search'   /></span>  
+        </form>
+        <!-- <span id='icon'><i class="fa fa-github giticon "></i></span> -->
+        <nav id='navArea'>
+         <ul class='navArea'>
+          
+            <li><i class="fa fa-github giticon "></i></li>
+            <li class="gittext" >GitHub</li>
+           
+         </ul>
+      </nav>
+    </div>
+</div>
+<div style='clear: both;'></div>

@@ -1,18 +1,20 @@
+
 <div class="header">
     <!-- github logo -->
-    <div class="logo">
+    <div class="logo container-fluid">
     <i class="fa fa-github pull-left giticon "></i> 
     <h2 class="float-right pt-1">GitHub</h2>
     </div>
   </div>
     <!-- search box -->
+    <div class="form-group">
     <form  (submit)="onSubmit()">
-    <div class="searchbox">
+    <div class="searchbox ">
       <div class="searchsub">
-        Enter the user name to search for repos<br>
+      Enter the user name to search for repos  <br>
         <input class="inpbox" type="text" [(ngModel)]='this.username' [formControl]="name" (input)="changeValue()" ><br>
       </div>
-      <div class="btndiv">
+      <div class="btndiv col-sm-6 col-sm-push-3">
         <button type="submit" class="btn1" (click)="onSubmit()">Search</button>
       </div>
   
@@ -21,7 +23,8 @@
       </div>
     </div>
   </form>
-  
+  </div>
+
   
     
   

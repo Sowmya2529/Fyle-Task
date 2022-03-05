@@ -9,6 +9,7 @@ export class ApiService {
   rootUrl="https://api.github.com";
   user:any;
   itemsPerPage=6;
+  errmsg="";
 
   constructor(private http: HttpClient ) { 
 

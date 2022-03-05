@@ -7,16 +7,20 @@ import { HomeComponent } from './home/home.component';
 import { RepoComponent } from './repo/repo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from "@angular/material/card";
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
     RepoComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    ModalComponent
   ],
   imports: [
     
@@ -28,10 +32,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ReactiveFormsModule,
     MatCardModule,
     BrowserAnimationsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatDialogModule
+   
   ],
-  providers: [],
+  providers: [RepoComponent],
   bootstrap: [AppComponent],
-  exports:[]
+  exports:[],
+  entryComponents:[ModalComponent]
 })
 export class AppModule { }
