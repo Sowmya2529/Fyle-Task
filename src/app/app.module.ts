@@ -14,13 +14,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ModalComponent } from './modal/modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     RepoComponent,
     HomeComponent,
     NavbarComponent,
-    ModalComponent
+    ModalComponent,
+   
   ],
   imports: [
     

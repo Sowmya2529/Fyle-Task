@@ -11,36 +11,36 @@
           <div class="card profile-card">
               <div class="card-horizontal" >
                   <div *ngIf="!this.smallscreen" class="img-square-wrapper">
-                      <img class="card-img-top" src="{{user[0].avatar_url}}" alt="Profile avatar">
+                      <img class="card-img-top" src="{{this.avatar_url}}" alt="Profile avatar">
                   </div>
-                  <div class="card-body">
+                  <div class="card-body ">
                       <h4 class="card-title"></h4>
                      <div *ngIf="this.smallscreen" class="row mt-2">
                        <div class="column">
-                        <img  class="small-sc-img" src="{{user[0].avatar_url}}" alt="Profile avatar"> 
+                        <img  class="small-sc-img" src="{{this.avatar_url}}" alt="Profile avatar"> 
                        </div>
                      </div>
                       <div class="row mt-2">
                         <div class="column">
                           <i class="fa fa-user alignleft" style="font-size:30px;color:purple"></i> 
                          
-                          <span class="alignleft pt-2">{{user[0].login}}</span>
+                          <span class="alignleft pt-2">{{this.username}}</span>
                         </div>
                      
                       </div>
                     <div class="row mt-2">
                       <div class="column">  
                        <i class="fa fa-folder alignleft" style="font-size:30px;color:purple"></i> 
-                       <span class="alignleft pt-2">{{user[0].public_repos}} Public Repositories</span>
+                       <span class="alignleft pt-2 text-center">{{this.public_repos}} Public Repositories</span>
                        </div>
                     </div>
-                    <div class="row mt-2">
+                    <div class="row mt-2 text-center">
                       <div class="column"> 
                         <i class="fa fa-link alignleft" style="font-size:30px;color:purple"></i> 
-                        <span class="alignleft pt-2 text-truncate"  style="cursor:pointer"> <a href="{{user[0].html_url}}/?tab=repositories" >{{user[0].html_url}}/?tab=repositories</a></span>
+                        <span class="alignleft pt-2 text-truncate"  style="cursor:pointer"> <a href="https://github.com/{{this.username}}/?tab=repositories" >https://github.com/{{this.username}}/?tab=repositories</a></span>
                       </div>
                     </div>
-                   <a href="{{user[0].html_url}}" > <button type="button" class="btn btn-primary mt-4">View Github Profile</button></a>
+                   <a href="https://github.com/{{this.username}}" > <button type="button" class="btn btn-primary mt-4">View Github Profile</button></a>
                     </div>
                  
               </div>
@@ -56,15 +56,18 @@
 </div>
 </div>
 <!-- Spinner -->
-<div *ngIf="repoloading" class="spinner spinner-border text-primary" role="status">
+<div  *ngIf="repoloading" class="position-absolute w-100 h-100 d-flex flex-column align-items-center bg-white justify-content-center">
+
+<div class="spinner spinner-border text-primary" role="status">
   <span class="sr-only">Loading...</span>
+</div>
 </div>
 
 <!-- repo block -->
 <div class="container ">
-  <div class="row repo-container">
-    
-  <mat-card class="user-card mat-elevation-z5 col-lg-4" *ngFor="let data of this.repos |filter:searchText| paginate: { itemsPerPage: itemsPerPage , currentPage: page, totalItems: totalItems } ">
+  <div class="row repo-container" >
+  
+  <mat-card class="user-card zoom mat-elevation-z5 col-lg-4" *ngFor="let data of this.repos |filter:searchText| paginate: { itemsPerPage: itemsPerPage , currentPage: page, totalItems: this.totalItems } ">
     <mat-card-content>
       <h4 class="card-heading">{{data.name}}</h4>
 
@@ -93,7 +96,7 @@
 
    <!-- pagination -->
   
-<pagination-controls *ngIf="!repoloading" class="text-center my-pagination"
+<pagination-controls *ngIf="!repoloading" class="text-center my-pagination "
 [maxSize]="maxSize"
                          [directionLinks]="directionLinks"
                          [autoHide]="autoHide"

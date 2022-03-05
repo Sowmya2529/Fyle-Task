@@ -1,18 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+
 body
 {
-    background: #E9F7EF;
+    /* background: #E9F7EF; */
+   
     color:black;
-    
+    background: whitesmoke;
+  
 }
 
 .header
 {
 
  height:60px;
- color:white;
- background: #563d7c;
+ color:black;
+ /* background: #563d7c; */ 
+ 
+  background:url("src\assets\bg-img\bg.jpg");
+
+
  
 }
 
@@ -25,7 +30,7 @@ body
 .giticon
 {
   font-size:40px;
-  color:white  
+  color:black; 
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: "Helvetica", sans-serif; }

@@ -38,7 +38,7 @@ onSubmit()
      this.errmsg="Please provide username to continue!";
      this.apiservice.errmsg=this.errmsg;
   }
-
+else
     this.getUser();
   
     
@@ -58,7 +58,11 @@ this.apiservice.getUser(user).subscribe(data=>
     console.log(data);
     this.users=data
   localStorage.setItem('loginname', this.users['login']);
-this.router.navigate([this.users['login'],'repos']);
+  localStorage.setItem('avatar_url',this.users['avatar_url']);
+  localStorage.setItem('public_repos',this.users['public_repos']);
+  localStorage.setItem('url',this.users['html_url']);
+  console.log(this.users['html_url'])
+  this.router.navigate([this.users['login'],'repos']);
   },
   error => {
     // You can access status:

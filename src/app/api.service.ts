@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ApiService {
 
   }
 
-  public getUser(username:string)
+  public getUser(username:string):Observable<any>
   {
     return this.http.get(this.rootUrl+'/users/'+username)
   }
@@ -23,8 +24,8 @@ export class ApiService {
   // {
   //   return this.http.get(this.rootUrl+'/users/'+username+'/repos'+'?page='+page+'&per_page='+this.itemsPerPage)
   // }
-  public getRepos(username:string)
+  public getRepos(username:string,page:number):Observable<any>
   {
-    return this.http.get(this.rootUrl+'/users/'+username+'/repos')
+    return this.http.get(this.rootUrl+'/users/'+username+'/repos?page='+page+'&per_page=30')
   }
 }

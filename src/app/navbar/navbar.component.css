@@ -4,11 +4,14 @@
 
 .box {
 	width: 100%;
-	background: #563d7c;
+	/* background: #563d7c; */
+    background:url("src\assets\bg-img\bg.jpg");
+
+
 	display: inline-block;
     position: fixed; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
- z-index:4;
+    top: 0; /* Position the navbar at the top of the page */
+    z-index:4;
    
 }
 #icon {
@@ -34,7 +37,7 @@ nav ul {
 nav li {
 	display: block;
     font-size: 19px;
-	color: white;
+	color: black;
 	margin: 0;
 }
 ul.navArea>li>a {

@@ -48,6 +48,9 @@ this.apiservice.getUser(user).subscribe(data=>
     console.log(data);
     this.users=data
   localStorage.setItem('loginname', this.users['login']);
+  localStorage.setItem('avatar_url',this.users['avatar_url']);
+  localStorage.setItem('public_repos',this.users['public_repos']);
+  localStorage.setItem('url',this.users['html_url']);
   this.repo.ngOnInit();
   },
   error => {
