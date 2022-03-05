@@ -38,6 +38,12 @@ export class RepoComponent implements OnInit {
    else
    this.smallscreen=false
   }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event:any) {
+    console.log('back button')
+   this.getRepos();
+  }
   constructor(private apiservice:ApiService,private http:HttpClient,private router:Router) {
     
 
