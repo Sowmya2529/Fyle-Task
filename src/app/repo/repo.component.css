@@ -98,7 +98,7 @@ mat-card-content
 
 .my-pagination /deep/ .ngx-pagination .current
 {
-background-color: #0d6efd;
+background-color: #563d7c;
 }
 
 .my-pagination
