@@ -1,7 +1,8 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit,HostListener } from '@angular/core';
 import { ApiService } from '../api.service';
-import { NavigationStart, Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs'
 @Component({
   selector: 'app-repo',
   templateUrl: './repo.component.html',
@@ -24,11 +25,14 @@ export class RepoComponent implements OnInit {
   totalpages:any=1;
   public innerWidth: any;
   smallscreen=false;
-
+  curpage=1;
   public maxSize: number = 10;
   public directionLinks: boolean = true;
   public autoHide: boolean = false;
   public responsive: boolean = true;
+
+
+  private routeSub: Subscription=new Subscription();
   public labels: any = {
       previousLabel: 'Previous',
       nextLabel: 'Next',
@@ -55,9 +59,9 @@ export class RepoComponent implements OnInit {
   }
 
 
-  constructor(private apiservice:ApiService,private http:HttpClient,private router:Router) {
+  constructor(private apiservice:ApiService,private http:HttpClient,private router:Router,private route:ActivatedRoute) {
     
-   
+  
 
    }
 
@@ -68,7 +72,7 @@ goToHome()
   this.router.navigate([""])
 }
 //method to get repos of user
-   getRepos()
+   getRepos(currpage:number)
    {
    // console.log(this.apiservice.user)
     console.log(this.username,this.avatar_url,this.public_repos,this.url)
@@ -81,10 +85,10 @@ goToHome()
        else
           this.totalpages=this.public_repos/30
      }
-    this.pages=Array(this.totalpages).fill(0).map((_, i) => i+1);
-    console.log(this.pages)
-    console.log(this.totalpages)
-     this.apiservice.getRepos(this.username,1).subscribe(data=>
+ //   this.pages=Array(this.totalpages).fill(0).map((_, i) => i+1);
+  //  console.log(this.pages)
+ //   console.log(this.totalpages)
+     this.apiservice.getRepos(this.username,currpage).subscribe(data=>
        {
         this.repoloading=false;
           console.log(data);
@@ -112,13 +116,22 @@ goToHome()
     this.avatar_url=localStorage.getItem('avatar_url');
     this.public_repos=localStorage.getItem('public_repos');
     this.url=localStorage.getItem('html_url');
+
+    this.routeSub = this.route.params.subscribe(params => {
+      console.log(params) //log the entire params object
+      console.log(params['id']) //log the value of id
+    //  this.page=params['page']
+     
+    });
+    
     if(!this.username)
     
       this.router.navigate(['']);
     
     else
     
-      this.getRepos();
+      this.getRepos(this.page);
+      
   }
 
 ngOnDestroy()
@@ -127,6 +140,18 @@ ngOnDestroy()
   localStorage.setItem("avatar_url","")
   localStorage.setItem("public_repos",'')
   localStorage.setItem("html_url","")
+  this.routeSub.unsubscribe();
+}
+
+
+//on page change
+loadPage(event:any)
+{
+  this.page=event;
+ 
+//  this.router.navigate([this.username,event,'repos']);
+ this.getRepos(this.page);
+
 }
 
 }

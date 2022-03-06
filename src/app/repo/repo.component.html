@@ -67,7 +67,7 @@
 <div class="container ">
   <div class="row repo-container" >
   
-  <mat-card class="user-card zoom mat-elevation-z5 col-lg-4" *ngFor="let data of this.repos |filter:searchText| paginate: { itemsPerPage: itemsPerPage , currentPage: page, totalItems: this.totalItems } ">
+  <mat-card class="user-card zoom mat-elevation-z5 col-lg-4" *ngFor="let data of this.repos |filter:searchText ">
     <mat-card-content>
       <h4 class="card-heading">{{data.name}}</h4>
 
@@ -96,7 +96,7 @@
 
    <!-- pagination -->
   
-<pagination-controls *ngIf="!repoloading" class="text-center my-pagination "
+<!-- <pagination-controls *ngIf="!repoloading" class="text-center my-pagination "
 [maxSize]="maxSize"
                          [directionLinks]="directionLinks"
                          [autoHide]="autoHide"
@@ -107,6 +107,14 @@
                          [screenReaderPageLabel]="labels.screenReaderPageLabel"
                          [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
                          (pageChange)="page = $event"
-></pagination-controls>
+></pagination-controls> -->
+
+<ngb-pagination class="d-flex justify-content-center mb-2 mt-2"
+  [collectionSize]="public_repos" 
+  [(page)]="page" 
+  [boundaryLinks]="true" 
+  [pageSize]="itemsPerPage"
+  [maxSize]="5" [rotate]="true" (pageChange)="loadPage($event)">
+</ngb-pagination>
 
 

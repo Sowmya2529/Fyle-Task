@@ -26,6 +26,6 @@ export class ApiService {
   // }
   public getRepos(username:string,page:number):Observable<any>
   {
-    return this.http.get(this.rootUrl+'/users/'+username+'/repos?page='+page+'&per_page=30')
+    return this.http.get(this.rootUrl+'/users/'+username+'/repos?page='+page+'&per_page=6')
   }
 }

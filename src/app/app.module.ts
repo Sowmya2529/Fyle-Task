@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ModalComponent } from './modal/modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ModalComponent } from './modal/modal.component';
     MatCardModule,
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
    
   ],
   providers: [RepoComponent],

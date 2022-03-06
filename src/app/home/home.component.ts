@@ -62,7 +62,7 @@ this.apiservice.getUser(user).subscribe(data=>
   localStorage.setItem('public_repos',this.users['public_repos']);
   localStorage.setItem('url',this.users['html_url']);
   console.log(this.users['html_url'])
-  this.router.navigate([this.users['login'],'repos']);
+  this.router.navigate([this.users['login'],1,'repos']);
   },
   error => {
     // You can access status:
